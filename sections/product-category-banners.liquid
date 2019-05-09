@@ -1,4 +1,11 @@
-
+<style>
+  .category-box .content h3{
+    color: {{section.settings.heading_color}};
+  }
+  .category-box .content p {
+    color: {{section.settings.subheading_color}}
+  }
+</style>
   <section class="product-category">
     <div class="container">
       <div class="row">
@@ -13,8 +20,8 @@
             <a href="{{section.settings.category_top_left_url}}">
               <img src="{{section.settings.category_top_left | img_url: '1920x'}}">
               <div class="content">
-                <h3 style="color: {{section.settings.heading_color}}">{{section.settings.category_top_left_header}}</h3>
-                <p style="color: {{section.settings.subheading_color}}">{{section.settings.category_top_left_text}}</p>
+                <h3>{{section.settings.category_top_left_header}}</h3>
+                <p>{{section.settings.category_top_left_text}}</p>
               </div>
             </a>  
           </div>
@@ -22,8 +29,8 @@
             <a href="{{section.settings.category_bottom_left_url}}">
               <img src="{{section.settings.category_bottom_left | img_url: '1920x'}}">
               <div class="content">
-                <h3 style="color: {{section.settings.heading_color}}">{{section.settings.category_bottom_left_header}}</h3>
-                <p style="color: {{section.settings.subheading_color}}">{{section.settings.category_bottom_left_text}}</p>
+                <h3>{{section.settings.category_bottom_left_header}}</h3>
+                <p>{{section.settings.category_bottom_left_text}}</p>
               </div>
             </a>  
           </div>
@@ -34,8 +41,8 @@
             <a href="{{section.settings.category_right_url}}">
               <img src="{{section.settings.category_right | img_url: '1920x'}}" alt="">
               <div class="content">
-                <h3 style="color: {{section.settings.heading_color}}">{{section.settings.category_right_header}}</h3>
-                <p style="color: {{section.settings.subheading_color}}">{{section.settings.category_right_text}}</p>
+                <h3>{{section.settings.category_right_header}}</h3>
+                <p>{{section.settings.category_right_text}}</p>
               </div>
             </a>  
           </div>
