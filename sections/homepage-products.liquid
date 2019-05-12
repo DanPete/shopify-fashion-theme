@@ -27,7 +27,10 @@
                       <a href="#"><i class="fa fa-heart-o"></i></a>
                     </li> {% endcomment %}
                     <li>
-                      <a href=""><i class="fa fa-shopping-cart"></i></a>
+                      <form id="form-{{product.handle}}" method="post" action="/cart/add">
+                        <input type="hidden" name="id" value="{{product.variants.first.id}}">
+                        <a onclick="document.getElementById('form-{{product.handle}}').submit()"><i class="fa fa-shopping-cart"></i></a>
+                      </form>
                     </li>
                   </ul>
                 </div>

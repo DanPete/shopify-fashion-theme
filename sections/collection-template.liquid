@@ -12,14 +12,18 @@
                 <div class="card">
                   <div class="card-header" id="headingOne">
                     <h5>
-                      <a href="" class="{% if forloop.index != 1 %} collapsed {% endif %}"data-toggle="collapse" 
+                      {% comment %} First one open logic: <a href="" class="{% if forloop.index != 1 %} collapsed {% endif %}"data-toggle="collapse" 
+                         data-target="#collapse-{{link.title}}" aria-expanded="true" aria-controls="collapse-{{link.title}}">
+                        {{link.title}}
+                      </a> {% endcomment %}
+                      <a href="" class="collapsed"data-toggle="collapse" 
                          data-target="#collapse-{{link.title}}" aria-expanded="true" aria-controls="collapse-{{link.title}}">
                         {{link.title}}
                       </a>
                     </h5>
                   </div>
-{% comment %} stopped here! 3/4 through video - collection page accordian{% endcomment %}
-                  <div id="collapse-{{link.title}}" class="collapse {% if forloop.first %} show {% endif %}" aria-labelledby="headingOne" data-parent="#accordion">
+                  {% comment %} First one open logic: <div id="collapse-{{link.title}}" class="collapse {% if forloop.first %} show {% endif %}" aria-labelledby="headingOne" data-parent="#accordion"> {% endcomment %}
+                  <div id="collapse-{{link.title}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                       <ul class="list-unstyled">
                         {% for childlink in link.links %}
@@ -65,7 +69,10 @@
                           <a href="#"><i class="fa fa-heart-o"></i></a>
                         </li> {% endcomment %}
                         <li>
-                          <a href=""><i class="fa fa-shopping-cart"></i></a>
+                      <form id="form-{{product.handle}}" method="post" action="/cart/add">
+                        <input type="hidden" name="id" value="{{product.variants.first.id}}">
+                        <a onclick="document.getElementById('form-{{product.handle}}').submit()"><i class="fa fa-shopping-cart"></i></a>
+                      </form>
                         </li>
                       </ul>
                     </div>

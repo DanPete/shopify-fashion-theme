@@ -39,8 +39,9 @@ $('.btn.edit-address').click(function() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+         // TODO maybe change this?? slidesToShow: 3, slidesToScroll: 3
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true
         }

@@ -511,7 +511,7 @@ p.with-icons i {
   Call to action
 ==================================================================*/
 .call-to-action .subscription-form input {
-  height: 51px;
+  height: 51px !important;
 }
 
 .call-to-action .subscription-form .btn-main, .call-to-action .subscription-form .btn-solid-border, .call-to-action .subscription-form .btn-transparent, .call-to-action .subscription-form .btn-small {
