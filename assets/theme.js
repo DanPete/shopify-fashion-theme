@@ -102,4 +102,18 @@ $('.btn.edit-address').click(function() {
     $('#variant-id').val(found.id)
   });
   
-  
+  $(window).scroll(function() {
+    if ($(document).scrollTop() > 50) {
+      $('nav').addClass('shrink');
+    } else {
+      $('nav').removeClass('shrink');
+    }
+  });
+
+  $(window).scroll(function() {
+    if ($(document).scrollTop() > 1) {
+      $('.header').addClass('scroll');
+    } else {
+      $('.header').removeClass('scroll');
+    }
+  });

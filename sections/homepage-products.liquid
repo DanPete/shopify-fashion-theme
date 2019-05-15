@@ -7,41 +7,43 @@
         </div>
       </div>
       {% assign collection = collections[section.settings.collection] %}
-      <div class="row">
-        {% for product in collection.products limit: section.settings.product_limit %}
-          <div class="col-md-4">
-            <div class="product-item">
-              <div class="product-thumb">
-                {% if product.compare_at_price and product.compare_at_price != product.price %}
-                  <span class="bage">Sale</span>
-                {% endif %}
-                
-                <img class="img-responsive" src="{{product.featured_image.src | img_url: '1920x'}}">
-                <div class="preview-meta">
-                  <ul>
-                    <li>
-                      <a href="{{product.url}}"><i class="fa fa-search"></i></a>
-                    </li>
-                    {% comment %} To add wish list {% endcomment %}
-                    {% comment %} <li>
-                      <a href="#"><i class="fa fa-heart-o"></i></a>
-                    </li> {% endcomment %}
-                    <li>
-                      <form id="form-{{product.handle}}" method="post" action="/cart/add">
-                        <input type="hidden" name="id" value="{{product.variants.first.id}}">
-                        <a onclick="document.getElementById('form-{{product.handle}}').submit()"><i class="fa fa-shopping-cart"></i></a>
-                      </form>
-                    </li>
-                  </ul>
+      <div class="container">
+        <div class="row">
+          {% for product in collection.products limit: section.settings.product_limit %}
+            <div class="col-md-4 col-6">
+              <div class="product-item">
+                <div class="product-thumb">
+                  {% if product.compare_at_price and product.compare_at_price != product.price %}
+                    <span class="bage">Sale</span>
+                  {% endif %}
+                  
+                  <img class="img-responsive" src="{{product.featured_image.src | img_url: '1920x'}}">
+                  <div class="preview-meta">
+                    <ul>
+                      <li>
+                        <a href="{{product.url}}"><i class="fa fa-search"></i></a>
+                      </li>
+                      {% comment %} To add wish list {% endcomment %}
+                      {% comment %} <li>
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                      </li> {% endcomment %}
+                      <li>
+                        <form id="form-{{product.handle}}" method="post" action="/cart/add">
+                          <input type="hidden" name="id" value="{{product.variants.first.id}}">
+                          <a onclick="document.getElementById('form-{{product.handle}}').submit()"><i class="fa fa-shopping-cart"></i></a>
+                        </form>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="product-content">
+                  <h4><a href="{{product.url}}">{{product.title}}</a></h4>
+                  <p class="price">{{product.price | money }}</p>
                 </div>
               </div>
-              <div class="product-content">
-                <h4><a href="{{product.url}}">{{product.title}}</a></h4>
-                <p class="price">{{product.price | money }}</p>
-              </div>
             </div>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>

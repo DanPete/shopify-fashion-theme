@@ -4,10 +4,11 @@
   <div class="cart shopping">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 offset-2">
+        <div class="col-md-8 offset-md-2">
           <div class="block">
             <div class="product-list">
               <form method="post">
+              <div class="table-responsive">
                 <table class="table">
                   <thead>
                     <tr>
@@ -27,7 +28,7 @@
                           </div>
                         </td>
                         <td>
-                          <input type="number" name="updates[]" class="btn btn-default" value={{line_item.quantity}} min="0" pattern="[0-9]">
+                          <input type="number" name="updates[]" class="text-center" value={{line_item.quantity}} min="0" pattern="[0-9]">
                         </td>
                         <td>{{line_item.line_price | money}}</td>
                         <td>
@@ -38,6 +39,7 @@
                     {% endfor %}
                   </tbody>
                 </table>
+                </div>
                 <div class="row justify-content-end cart-total">
                   <div class="col-md-2">
                     Total

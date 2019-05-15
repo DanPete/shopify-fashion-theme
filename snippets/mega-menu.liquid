@@ -1,0 +1,32 @@
+<div class="navigation__mega-menu">
+  <div class="mega-menu__inner">
+    <div class="mega-menu__section mega-menu__featured-left">
+      {% assign left_product = all_products[section.settings.left_product] %}
+      <p>{{left_product.title}}</p>
+      <img src="{{left_product.featured_image.src | img_url: 'medium'}}">
+    </div>
+    <div class="mega-menu__section mega-menu__collections">
+      <p class="mega-menu__title">Collections</p>
+      <div class="mega-menu__grid">
+      {% for childlink in link.links %}
+        <div>
+        <p class="mega-menu__heading">{{childlink.title}}</p>
+        <ul>
+          {% for sublink in childlink.links %}
+            <li class="mega-menu__item">
+              <a href="{{sublink.url}}">{{sublink.title}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+    <div class="mega-menu__section mega-menu__featured-right">
+      {% assign right_product = all_products[section.settings.right_product] %}
+      <p>{{right_product.title}}</p>
+      <img src="{{right_product.featured_image.src | img_url: 'medium'}}">
+    </div>
+  </div>
+</div>
+<div class="header__overlay desktop-only"></div>

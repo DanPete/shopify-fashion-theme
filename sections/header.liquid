@@ -1,5 +1,5 @@
-<section class="top-header">
-  <div class="container">
+{% comment %} <section class="top-header">
+  <div class="container-fluid pt-3">
     <div class="row">
       <div class="col-md-4 col-xs-12 col-sm-4">
         <div class="contact-number">
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="col-md-4 col-xs-12 col-sm-4">
-        <ul class="top-menu list-inline float-right">
+        <ul class="top-menu list-inline float-sm-right">
           <li class="list-inline-item"><a href="/cart"><i class="fa fa-shopping-cart"></i>Cart</a></li>
           {% if shop.customer_accounts_enabled %}
             {% if customer %}
@@ -42,9 +42,116 @@
       </div>
     </div>
   </div>
+</section> {% endcomment %}
+
+{% comment %} {% include 'menu' %} {% endcomment %}
+
+<section class="header-section index-header">
+  <header class="header main-header" role="banner">
+    <div class="header__content">
+      <div class="header__logo">
+        <h1>
+        <a class="logo-image" href="/">
+          {% comment %} <img class="img-responsive" src="{{ 'logo.svg' | asset_url }}" alt=""> {% endcomment %}
+          FASHION
+        </a>
+        </h1>
+      </div>
+      <div class="header__navigation desktop-only" role="navigation">
+        <ul>
+          {% for link in linklists[section.settings.main_linklist].links %}
+            {% if link.links == blank %}
+              <li class="nav-element">
+                <a href="{{link.url}}">{{link.title}}</a>
+              </li>
+            {% endif %}
+
+            {% if link.links != blank %}
+              <li class="nav-element">
+                <a href="{{link.url}}">{{link.title}}</a>
+                {% include 'mega-menu' %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="header__right-links">
+        <ul>
+          <li class="nav-element"><a class="px-1" href="/cart"><i class="fa fa-shopping-cart" title="Your Cart"></i></a></li>
+          {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+              <li class="nav-element"><a class="px-1" href="/account/"><i class="fa fa-user"></i>Your Account</a></li>
+              <li class="nav-element"><a class="px-1" href="/account/"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+            {% else %}
+              <li class="nav-element"><a class="px-1" href="/account/login"><i class="fa fa-sign-in" title="Login"></i></a></li>
+            {% endif %}
+          {% endif %}
+          <li class="nav-element mobile-and-tablet-only"><a><i class="fa fa-bars"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 </section>
 
-{% include 'menu' %}
+{% comment %} <section class="menu">
+  <nav class="navbar navbar-expand-lg navbar-light white">
+    <a class="navbar-brand" href="/">
+      <img class="img-responsive" src="{{ 'logo.svg' | asset_url }}" alt="">
+    </a>
+    <div class="d-flex flex-row order-2 order-lg-3">
+      <ul class="navbar-nav flex-row">
+        <li class="nav-item"><a class="nav-link px-1" href="/cart"><i class="fa fa-shopping-cart px-1"></i>Cart</a></li>
+        {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+              <li class="nav-item"><a class="nav-link px-1" href="/account/"><i class="fa fa-user px-1"></i>Your Account</a></li>
+              <li class="nav-item"><a class="nav-link px-1" href="/account/"><i class="fa fa-sign-out px-1"></i>Sign Out</a></li>
+            {% else %}
+              <li class="nav-item"><a class="nav-link px-1" href="/account/login"><i class="fa fa-sign-in px-1"></i>Login</a></li>
+            {% endif %}
+          {% endif %}
+      </ul>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        {% for link in linklists[section.settings.main_linklist].links %}
+          {% if link.links == blank %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{link.url}}">{{link.title}}
+              </a>
+            </li>
+          {% endif %}
+            
+
+          {% if link.links != blank %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Shop
+              </a>
+              <div class="dropdown-menu full-width" aria-labelledby="navbarDropdown">
+                <div class="row">
+                  {% for childlink in link.links %}
+                    <div class="col-sm-4">
+                    <div class="dropdown-header">{{childlink.title}}</div>
+                    <div class="dropdown-divider"></div>
+                    {% for sublink in childlink.links %}
+                      <a href="{{sublink.url}}">{{sublink.title}}</a>
+                    {% endfor %}
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+</section> {% endcomment %}
 
 {% schema %}
   {
@@ -55,6 +162,18 @@
         "id": "main_linklist",
         "label": "Menu",
         "default": "main-menu"
+      },
+      {
+        "type": "product",
+        "id": "left_product",
+        "label": "Left Side Product",
+        "info": "This is the product that will be featured on the left side of the mega menu(dropdown)"
+      },
+      {
+        "type": "product",
+        "id": "right_product",
+        "label": "Righ Side Product",
+        "info": "This is the product that will be featured on the right side of the mega menu(dropdown)"
       }
     ]
   }
