@@ -2,8 +2,11 @@
   <div class="mega-menu__inner">
     <div class="mega-menu__section mega-menu__featured-left">
       {% assign left_product = all_products[section.settings.left_product] %}
-      <img src="{{left_product.featured_image.src | img_url: 'medium'}}">
-      <p>{{left_product.title}}</p>
+      <a class="featured-product__link" href="{{left_product.url}}">
+        <p class="subtitle">Men's Featured Product</p>
+        <img src="{{left_product.featured_image.src | img_url: '225x250', crop: 'center'}}">
+        <p class="featured-item__title">{{left_product.title}} - <span class="featured-item__price">{{left_product.price | money}}</span></p>
+      </a>
     </div>
     <div class="mega-menu__section mega-menu__collections">
       <p class="mega-menu__title">Collections</p>
@@ -32,8 +35,11 @@
     </div>
     <div class="mega-menu__section mega-menu__featured-right">
       {% assign right_product = all_products[section.settings.right_product] %}
-      <img src="{{right_product.featured_image.src | img_url: 'medium'}}">
-      <p>{{right_product.title}}</p>
+      <a class="featured-product__link" href="{{right_product.url}}">
+        <p class="subtitle">Womens's Featured Product</p>
+        <img src="{{right_product.featured_image.src | img_url: '225x250', crop: 'center'}}">
+        <p class="featured-item__title">{{right_product.title}} - <span class="featured-item__price">{{right_product.price | money}}</span></p>
+      </a>
     </div>
   </div>
 </div>
