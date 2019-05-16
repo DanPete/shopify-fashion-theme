@@ -389,12 +389,25 @@ p.with-icons i {
         justify-content: center;
       }
       .nav-element{
-        height: 63px;
-        padding-top: 14px;
+        height: 59px;
+        padding-top: 16px;
         padding-left: 20px;
         padding-right: 20px;
         letter-spacing: 0.6px;
         font-weight: 500;
+        z-index: 101;
+        // &:after{
+        //   content: "\A";
+        //   background-color: blue;
+        //   width: 5px;
+        //   height: 5px;
+        //   position: absolute;
+        // }
+        &:hover {
+          border-bottom: solid 3px blue;
+        }
+        
+        
       }
     }
     .header__right-links {
@@ -422,6 +435,12 @@ p.with-icons i {
   grid-template-columns: 1fr 1fr;
 }
 
+.dark-header .main-header{
+  a, li a, li a i{
+    color: #404547;
+  }
+}
+
 /*=================================================================
   Mega Menu
 ==================================================================*/
@@ -432,12 +451,16 @@ p.with-icons i {
   position: absolute;
   z-index: 100;
   left: 0;
-  top: 66px;
+  top: 67px;
   width: 100vw;
   background-color: #fff;
   border-top: 1px solid #ededed;
   border-bottom: 1px solid #ededed;
   // height: 325px;
+  .mega-menu__inner{
+    padding: 5px;
+    z-index: 100;
+  }
 }
 
 .nav-element:hover {
@@ -466,11 +489,13 @@ p.with-icons i {
 
 .mega-menu__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
+  max-width: 1200px;
+  margin: auto;
   .mega-menu__section {
     padding: 50px 40px;
-    text-align: center;
+    // text-align: center;
     .mega-menu__title{
       font-weight: 400;
       font-size: 1.2rem;
@@ -478,6 +503,17 @@ p.with-icons i {
       color: #c1c1c1;
       text-transform: uppercase;
     }
+  }
+}
+
+.mega-menu__section {
+  ul {
+    flex-direction: column
+  }
+  .mega-menu__item {
+    font-weight: 200;
+    margin: 2px 0;
+    letter-spacing: .4px;
   }
 }
 
@@ -490,15 +526,11 @@ p.with-icons i {
       padding: 5px;
       margin: 0;
     }
-    .mega-menu__item {
-      font-weight: 200;
-      margin: 2px 0;
-      letter-spacing: .4px;
-    }
   }
-  ul {
-    flex-direction: column;
-  }
+}
+
+.mega-menu__section.mega-menu__featured-right, .mega-menu__section.mega-menu__featured-left {
+  text-align: center;
 }
 
 /*=================================================================

@@ -2,8 +2,8 @@
   <div class="mega-menu__inner">
     <div class="mega-menu__section mega-menu__featured-left">
       {% assign left_product = all_products[section.settings.left_product] %}
-      <p>{{left_product.title}}</p>
       <img src="{{left_product.featured_image.src | img_url: 'medium'}}">
+      <p>{{left_product.title}}</p>
     </div>
     <div class="mega-menu__section mega-menu__collections">
       <p class="mega-menu__title">Collections</p>
@@ -22,10 +22,18 @@
       {% endfor %}
       </div>
     </div>
+    <div class="mega-menu__section mega-menu__products">
+      <p class="mega-menu__title">Products</p>
+      <ul>
+        {% for product in collections[section.settings.featured_products].products limit: 10 %}
+          <li class="mega-menu__item"><a href="{{product.url}}">{{product.title}}</a></li>          
+        {% endfor %}
+      </ul>
+    </div>
     <div class="mega-menu__section mega-menu__featured-right">
       {% assign right_product = all_products[section.settings.right_product] %}
-      <p>{{right_product.title}}</p>
       <img src="{{right_product.featured_image.src | img_url: 'medium'}}">
+      <p>{{right_product.title}}</p>
     </div>
   </div>
 </div>
