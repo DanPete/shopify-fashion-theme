@@ -44,11 +44,53 @@
   </div>
   <div id="mobile-menu__mega-menu" class="mobile-menu__mega-menu">
     <div class="mobile-mega-menu__back">
-      <a data-mobile-menu-back><i class="fa fa-angle-left"></i>Shop</a>
+      <a data-mobile-menu-back><i class="fa fa-angle-left"></i><span>Shop</span></a>
       <a data-mobile-menu-close>
         <i class="fa fa-times"></i>
       </a>
     </div>
-    <div class="mobile-mega-menu__inner"></div>
+    <div class="mobile-mega-menu__inner">
+      <div class="mobile-mega-menu__collection">
+        <p class="mega-menu__title">COLLECTIONS</p>
+        <div class="mega-menu__grid">
+        {% for link in linklists[section.settings.main_linklist].links %}
+          {% for childlink in link.links %}
+            <div class="mega-menu__collection-section">
+              <p class="mega-menu__heading"><a href="{{childlink.url}}">{{childlink.title}}</a></p>
+              <ul>
+                {% for sublink in childlink.links %}
+                <li class="mega-menu__item"><a href="{{sublink.url}}" class="mega-menu__item-link">{{sublink.title}}</a></li> 
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        {% endfor %}
+        </div>
+      </div>
+      <div class="mobile-mega-menu__products">
+        <p class="mega-menu__title">PRODUCTS</p>
+        <ul>
+          {% for product in collections[section.settings.featured_products].products limit: 5 %}
+            <li class="mega-menu__item"><a href="{{product.url}}" class="mega-menu__item-link">{{product.title}}</a></li>          
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="mobile-mega-menu__featured-items_one">
+        {% assign left_product = all_products[section.settings.left_product] %}
+        <a class="featured-product__link" href="{{left_product.url}}">
+          <p class="subtitle">Men's Featured Product</p>
+          <img src="{{left_product.featured_image.src | img_url: '225x250', crop: 'center'}}">
+          <p class="featured-item__title">{{left_product.title}} - <span class="featured-item__price">{{left_product.price | money}}</span></p>
+        </a>
+      </div>
+      <div class="mobile-mega-menu__featured-item_two">
+        {% assign right_product = all_products[section.settings.right_product] %}
+        <a class="featured-product__link" href="{{right_product.url}}">
+          <p class="subtitle">Womens's Featured Product</p>
+          <img src="{{right_product.featured_image.src | img_url: '225x250', crop: 'center'}}">
+          <p class="featured-item__title">{{right_product.title}} - <span class="featured-item__price">{{right_product.price | money}}</span></p>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
