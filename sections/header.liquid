@@ -45,7 +45,7 @@
 </section> {% endcomment %}
 
 {% comment %} {% include 'menu' %} {% endcomment %}
-
+{% include 'mobile-menu' %}
 <section class="header-section index-header">
   <header class="header main-header" role="banner">
     <div class="header__content">
@@ -86,7 +86,7 @@
               <li class="nav-element"><a class="px-1" href="/account/login"><i class="fa fa-sign-in" title="Login"></i></a></li>
             {% endif %}
           {% endif %}
-          <li class="nav-element mobile-and-tablet-only"><a><i class="fa fa-bars"></i></a></li>
+          <li class="nav-element mobile-and-tablet-only" data-mobile-menu-open><a><i class="fa fa-bars"></i></a></li>
         </ul>
       </div>
     </div>

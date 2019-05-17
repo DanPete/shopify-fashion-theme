@@ -17,6 +17,7 @@ iframe#preview-bar-iframe { display:none; }
 }
 
 
+
 // Display Shortcuts
 
 @media (max-width: 767.98px) {
@@ -52,6 +53,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body.scroll-lock {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  position: fixed;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
@@ -62,10 +70,14 @@ p {
   font-size: 15px;
 }
 
-a, a:focus, a:hover {
+a, a:focus {
   text-decoration: none;
   outline: 0;
   color: #000;
+}
+
+a:hover {
+  color: rgb(107, 107, 107);
 }
 
 input[type="email"], input[type="password"], input[type="text"], input[type="tel"] {
@@ -355,7 +367,7 @@ p.with-icons i {
   position: absolute;
   width: 100%;
   padding: 8px 16px;
-  z-index: 10004;
+  z-index: 10001;
   transition: all .3s ease-in;
   a, li a, li a i {
     color: white;
@@ -562,6 +574,145 @@ p.with-icons i {
 .mega-menu__section.mega-menu__featured-right{
   border-left: 1px solid #ededed
 }
+
+/*=================================================================
+  Mobile Menu
+==================================================================*/
+
+.mobile-menu {
+  width: 100vw;
+  height: 100vh;
+  padding: 30px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10004;
+  // transform: translateX(-125%);
+  background-color: #fff;
+  transition: transform .3s ease;
+}
+
+.mobile-menu__close {
+  -ms-flex: 0;
+  flex: 0;
+  margin-bottom: 30px;
+  text-align: right;
+  font-size: 4vh;
+}
+
+.mobile-menu__main-inner {
+  height: calc(100% - 62px);
+  overflow-y: auto;
+}
+
+.mobile-menu__search {
+  text-align: center;
+  margin-bottom: 44px;
+  position: relative;
+}
+
+.mobile-menu__search {
+  span {
+    position: absolute;
+    padding-left: 9px;
+    padding-top: 3px;
+    font-size: 26px;
+  }
+  input {
+    width: 100%;
+    height: 45px;
+    border: .5px solid #404547;
+    border-radius: 100px;
+    padding-left: 40px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  /* Remove default */
+  // -webkit-appearance: none;
+  /* Now your own custom styles */
+  height: 10px;
+  width: 10px;
+  background: red;
+  /* Will place small red box on the right of input (positioning carries over) */
+
+}
+
+.mobile-menu__navigation, .mobile-menu__other-links {
+  margin-bottom: 36px;
+  ul {
+    list-style: none;
+    padding: 0;
+    border-bottom: 1px solid #ededed;
+  }
+  .nav-element {
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    .nav_element__link--mobile {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 300;
+      span {
+        display: flex;
+        align-items: center;
+      }
+      i {
+        margin-right: 20px;
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+.mobile-menu__other-links ul {
+  border-bottom: 0;
+}
+
+/* mobile-mega-menu */
+
+.mobile-menu__mega-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 20000;
+  padding: 30px 0;
+  transform: translateX(-125%);
+  background-color: #fff;
+  transition: all .3s ease;
+}
+
+.mobile-mega-menu__back {
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 30px;
+  margin-bottom: 10px;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 4vh;
+  font-weight: 400;
+  a{
+    i:first-of-type {
+      height: 26px;
+      // width: 26px;
+      margin-right: 20px;
+      vertical-align: text-bottom;
+    }
+  }
+}
+
+.mobile-mega-menu__back 
+
 
 /*=================================================================
   Title

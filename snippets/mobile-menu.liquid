@@ -1,0 +1,54 @@
+<div id="mobile-menu" class="mobile-menu mobile-and-tablet-only">
+  <div class="mobile-menu__close">
+    <a data-mobile-menu-close>
+      <i class="fa fa-times"></i>
+    </a>
+  </div>
+  <div class="mobile-menu__main-inner">
+    <div class="mobile-menu__search">
+      <form action="/search" method="get" class="mobile-menu__search-form" role="search">
+        <span><i class="fa fa-search"></i></span>
+        <input type="search" name="q" placeholder class="mobile-menu__search-field">
+      </form>
+    </div>
+    <div class="mobile-menu__navigation">
+      <ul>
+        {% for link in linklists[section.settings.main_linklist].links %}
+          {% if link.links == blank %}
+            <li class="nav-element">
+              <a class="nav_element__link--mobile" href="{{link.url}}">{{link.title}}<i class="fa fa-angle-right"></i></a>
+            </li>
+          {% endif %}
+
+          {% if link.links != blank %}
+            <li class="nav-element">
+              <a class="nav_element__link--mobile" href="{{link.url}}" data-submenu-link>{{link.title}}<i class="fa fa-angle-right"></i></a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="mobile-menu__other-links">
+      <ul>
+        <li class="nav-element"><a class="nav_element__link--mobile" href="/cart"><span><i class="fa fa-shopping-cart"></i>Your Cart</span></a></li>
+        {% if shop.customer_accounts_enabled %}
+          {% if customer %}
+            <li class="nav-element"><a class="nav_element__link--mobile" href="/account/"><span><i class="fa fa-user"></i>Your Account</span></a></li>
+            <li class="nav-element"><a class="nav_element__link--mobile" href="/account/"><span><i class="fa fa-sign-out"></i>Sign Out</span></a></li>
+          {% else %}
+            <li class="nav-element"><a class="nav_element__link--mobile" href="/account/login"><span><i class="fa fa-sign-in"></i>Sign In</span></a></li>
+          {% endif %}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  <div id="mobile-menu__mega-menu" class="mobile-menu__mega-menu">
+    <div class="mobile-mega-menu__back">
+      <a data-mobile-menu-back><i class="fa fa-angle-left"></i>Shop</a>
+      <a data-mobile-menu-close>
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+    <div class="mobile-mega-menu__inner"></div>
+  </div>
+</div>

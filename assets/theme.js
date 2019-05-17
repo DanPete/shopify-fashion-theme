@@ -117,3 +117,32 @@ $('.btn.edit-address').click(function() {
       $('.header').removeClass('scroll');
     }
   });
+
+  /* Open and Close Drawers with Mobile Menus */
+
+  document.querySelector('[data-mobile-menu-open]').addEventListener("click", function() {
+    document.getElementById('mobile-menu').style.transform = "translateX(0px)"
+    document.body.classList.add("scroll-lock")
+  });
+
+  $('[data-mobile-menu-close]').click(function () {
+    $('.mobile-menu').css('transform', 'translateX(-125%)')
+    $('.mobile-menu__mega-menu').css('transform', 'translateX(-125%)')
+    
+  });
+
+  // document.querySelectorAll('[data-mobile-menu-close]').addEventListener("click", function() {
+  //   console.log(document.getElementById('mobile-menu').style)
+  //   document.getElementById('mobile-menu').style.transform = "translateX(-125%)"
+  //   document.getElementById('mobile-menu__mega-menu').style.transform = "translateX(-125%)"
+  //   document.body.classList.remove("scroll-lock")
+  // });
+
+  document.querySelector('[data-submenu-link]').addEventListener("click", function(e) {
+    e.preventDefault()
+    document.getElementById('mobile-menu__mega-menu').style.transform = "translateX(0px)"
+  });
+
+  $('[data-mobile-menu-back]').click(function(){
+    $('.mobile-menu__mega-menu').css('transform', 'translateX(-125%)')
+  });
