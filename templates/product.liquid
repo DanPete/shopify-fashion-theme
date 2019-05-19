@@ -41,7 +41,8 @@
           <p class="product-description">
             {{short_description}}
           </p>
-          <form method="post" action="/cart/add">              
+        
+          <form method="post" action="/cart/add" data-product-form id="add-to-cart">              
             {% unless product.has_only_default_variant %}
               {% for product_option in product.options_with_values %}
                 <div class="product-category">
@@ -68,8 +69,84 @@
               </ul>
             </div>
             <input type="hidden" id="variant-id" name="id" value={{product.variants.first.id}}>
-           <input type="submit" value="Add to Cart" class="btn btn-main">
+           <input type="submit" name="add" data-submit-button data-product-atc-button value="Add to Cart" class="btn btn-main">
           </form>
+
+          {% comment %} {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
+            {% unless product.has_only_default_variant %}
+              {% for option in product.options_with_values %}
+                <div class="js">
+
+                  {% if forloop.index0 > 0 %}
+
+                    {% for value in option.values %}
+                      <input type="radio" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
+                      <label for="Option{{ option.position }}-{{ value }}">{{ value }}</label>
+                    {% endfor %}
+
+                  {% else %}
+
+                    <label for="Option{{ option.position }}">
+                      {{ option.name }}
+                    </label>
+
+                    <select
+                      id="Option{{ option.position }}"
+                      name="options[{{ option.name | escape }}]">
+                      {% for value in option.values %}
+                        <option
+                          value="{{ value | escape }}"
+                          {% if option.selected_value == value %}selected="selected"{% endif %}>
+                            {{ value }}
+                        </option>
+                      {% endfor %}
+                    </select>
+
+                  {% endif %}
+                </div>
+              {% endfor %}
+            {% endunless %}
+
+            <noscript>
+              <select name="id">
+                {% for variant in product.variants %}
+                  <option
+                    {% if variant == current_variant %}selected="selected"{% endif %}
+                    value="{{ variant.id }}">
+                      {{ variant.title }}
+                  </option>
+                {% endfor %}
+              </select>
+            </noscript>
+
+            <label for="Quantity">Quantity</label>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1">
+
+            <div data-price-wrapper>
+              <span data-product-price>
+                {{ current_variant.price | money }}
+              </span>
+
+              {% if product.compare_at_price_max > product.price %}
+                <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                <s data-compare-price>
+                  {% if current_variant.compare_at_price > current_variant.price %}
+                    {{ current_variant.compare_at_price | money }}
+                  {% endif %}
+                </s>
+              {% endif %}
+            </div>
+
+            <button
+              type="submit"
+              name="add"
+              data-submit-button>
+                <span data-submit-button-text>
+                  Add to Cart
+                </span>
+            </button>
+          {% endform %} 
+          {% endcomment %}
 
         </div>
       </div>

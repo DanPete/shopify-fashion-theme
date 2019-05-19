@@ -1,0 +1,76 @@
+<div class="cart-drawer" data-cart-drawer-outer="true">
+  <div class="cart-drawer__inner">
+    <div class="cart-drawer__close-and-title">
+      <div class="cart-drawer__close">
+        <a data-cart-close><i class="fa fa-long-arrow-left"></i></a>
+      </div>
+      <div class="cart-drawer__title {% if cart.item_count == 0 %} no-items {% endif %}">
+        <h4>My Cart</h4>
+        {% if cart.item_count > 0 %}
+          <p>{{cart.item_count}} {{cart.item_count | pluralize: 'item', 'items'}}</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="cart-drawer__items {% if cart.item_count == 0 %} no-items {% endif %}">
+      {% if cart.item_count == 0 %}
+      <p class="cart-drawer__no-items-text">You have not items in your cart</p>
+      <div class="cart-drawer__no-items-image">
+        <img src="" alt="">
+      </div>
+      {% else %}
+        {% for line_item in cart.items %}
+        {% assign line_number = forloop.index %}
+
+          {% for i in (1..line_item.quantity) %}
+            <div cart-drawer__item>
+              <div class="row">
+                <div class="cart-drawer__item-image col-5 col-md-3">
+                  <img src="{{ line_item.image | img_url: '100x'}}" alt="">
+                </div>
+                <div class="cart-drawer__item-info col-5 col-md-7">
+                  <p class="weight--regular">{{ line_item.product.title }}</p>
+                  <h5 class="item-info__variant-title">{{ line_item.variant.title }}</h5>
+                  <h5 class="item-info__price">{{ line_item.price | money }}</h5>
+                  <h5 class="item-info__quantity">Quantity: {{ line_item.quantity }}</h5>
+                </div>1
+                <div class="cart-drawer__item-remove col-2">
+                  <a id="cartItem{{ i }}" data-remove-cart-item data-quantity-loop="{{ i }}" data-line-number="{{ line_number }}" data-line-quantity="{{ line_item.quantity }}">
+                    <i class="fa fa-remove"></i>
+                  </a>
+                </div>
+              </div>           
+            </div>
+          {% endfor %}
+          
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% if cart.item_count > 0 %}
+      <div class="cart-drawer__prices">
+        <div class="cart-drawer__prices-subtotal">
+          <p class="weight--regular">Subtotal</p>
+          <p>{{cart.original_total_price | money }}</p>
+        </div>
+        <div class="cart-drawer__prices-shipping">
+          <p class="weight--regular"> Estimated Shipping</p>
+          <p>Free</p>
+        </div>
+        <div class="cart-drawer__prices-total">
+          <p class="weight--regular">Estimated Total</p>
+          <p class="weight--regular">{{ cart.total_price | money }}</p>
+        </div>
+      </div>
+    {% endif %}
+    <div class="cart-drawer__checkout">
+      {% if cart.item_count == 0 %}
+        <a href="#">
+          <p class="weight--regular">Start Shopping</p>
+        </a>
+      {% else %}
+        <a href="/checkout">
+          <p class="weight--regular">Checkout</p>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

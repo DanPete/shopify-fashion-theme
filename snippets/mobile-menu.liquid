@@ -75,21 +75,23 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="mobile-mega-menu__featured-items_one">
-        {% assign left_product = all_products[section.settings.left_product] %}
-        <a class="featured-product__link" href="{{left_product.url}}">
-          <p class="subtitle">Men's Featured Product</p>
-          <img src="{{left_product.featured_image.src | img_url: '225x250', crop: 'center'}}">
-          <p class="featured-item__title">{{left_product.title}} - <span class="featured-item__price">{{left_product.price | money}}</span></p>
-        </a>
-      </div>
-      <div class="mobile-mega-menu__featured-item_two">
-        {% assign right_product = all_products[section.settings.right_product] %}
-        <a class="featured-product__link" href="{{right_product.url}}">
-          <p class="subtitle">Womens's Featured Product</p>
-          <img src="{{right_product.featured_image.src | img_url: '225x250', crop: 'center'}}">
-          <p class="featured-item__title">{{right_product.title}} - <span class="featured-item__price">{{right_product.price | money}}</span></p>
-        </a>
+      <div class="mobile-mega-menu__featured-items">
+        <div class="mobile-mega-menu__featured-item_one">
+          {% assign left_product = all_products[section.settings.left_product] %}
+          <a class="featured-product__link" href="{{left_product.url}}">
+            <p class="subtitle">Men's Featured Product</p>
+            <img src="{{left_product.featured_image.src | img_url: '225x250', crop: 'center'}}">
+            <p class="featured-item__title">{{left_product.title}} - <span class="featured-item__price">{{left_product.price | money}}</span></p>
+          </a>
+        </div>
+        <div class="mobile-mega-menu__featured-item_two">
+          {% assign right_product = all_products[section.settings.right_product] %}
+          <a class="featured-product__link" href="{{right_product.url}}">
+            <p class="subtitle">Womens's Featured Product</p>
+            <img src="{{right_product.featured_image.src | img_url: '225x250', crop: 'center'}}">
+            <p class="featured-item__title">{{right_product.title}} - <span class="featured-item__price">{{right_product.price | money}}</span></p>
+          </a>
+        </div>
       </div>
     </div>
   </div>
