@@ -48,8 +48,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/js/mdb.min.js"></script>
-  {{ 'product.js' | asset_url | script_tag }}
-  {{ 'cart-drawer.js' | asset_url | script_tag }}
-  {{ 'theme.js' | asset_url | script_tag }}
+  {{ 'scripts.js' | asset_url | script_tag }}
+  {% comment %} {{ 'product.js' | asset_url | script_tag }} {% endcomment %}
+  {% comment %} {{ 'cart-drawer.js' | asset_url | script_tag }} {% endcomment %}
+  {% comment %} {{ 'theme.js' | asset_url | script_tag }} {% endcomment %}
 </body>
 </html>

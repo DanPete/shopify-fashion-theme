@@ -42,7 +42,8 @@
             {{short_description}}
           </p>
         
-          <form method="post" action="/cart/add" data-product-form id="add-to-cart">              
+          {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
+          {% comment %} <form method="post" action="/cart/add" data-product-form id="add-to-cart">               {% endcomment %}
             {% unless product.has_only_default_variant %}
               {% for product_option in product.options_with_values %}
                 <div class="product-category">
@@ -70,7 +71,8 @@
             </div>
             <input type="hidden" id="variant-id" name="id" value={{product.variants.first.id}}>
            <input type="submit" name="add" data-submit-button data-product-atc-button value="Add to Cart" class="btn btn-main">
-          </form>
+          {% comment %} </form> {% endcomment %}
+          {% endform %}
 
           {% comment %} {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
             {% unless product.has_only_default_variant %}

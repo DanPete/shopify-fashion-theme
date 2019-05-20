@@ -21,8 +21,8 @@
         {% for line_item in cart.items %}
         {% assign line_number = forloop.index %}
 
-          {% for i in (1..line_item.quantity) %}
-            <div cart-drawer__item>
+          
+            <div class="cart-drawer__item">
               <div class="row">
                 <div class="cart-drawer__item-image col-5 col-md-3">
                   <img src="{{ line_item.image | img_url: '100x'}}" alt="">
@@ -30,9 +30,9 @@
                 <div class="cart-drawer__item-info col-5 col-md-7">
                   <p class="weight--regular">{{ line_item.product.title }}</p>
                   <h5 class="item-info__variant-title">{{ line_item.variant.title }}</h5>
-                  <h5 class="item-info__price">{{ line_item.price | money }}</h5>
                   <h5 class="item-info__quantity">Quantity: {{ line_item.quantity }}</h5>
-                </div>1
+                  <h5 class="item-info__price">{{ line_item.price | money }}</h5>
+                </div>
                 <div class="cart-drawer__item-remove col-2">
                   <a id="cartItem{{ i }}" data-remove-cart-item data-quantity-loop="{{ i }}" data-line-number="{{ line_number }}" data-line-quantity="{{ line_item.quantity }}">
                     <i class="fa fa-remove"></i>
@@ -40,7 +40,7 @@
                 </div>
               </div>           
             </div>
-          {% endfor %}
+          
           
         {% endfor %}
       {% endif %}

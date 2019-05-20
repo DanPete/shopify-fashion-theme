@@ -1,0 +1,33 @@
+{
+  "name": "fashion-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@shopify/theme-product": "^2.0.5",
+    "@shopify/theme-product-form": "^2.0.5",
+    "babel-preset-shopify": "^19.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "concurrently": "^4.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "concurrently \"theme watch --notify=.sync_theme\" \"parcel watch scripts/scripts.js --out-dir assets --out-file scripts.js --no-hmr\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanPete/shopify-fashion-theme.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanPete/shopify-fashion-theme/issues"
+  },
+  "homepage": "https://github.com/DanPete/shopify-fashion-theme#readme"
+}
