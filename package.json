@@ -4,20 +4,28 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.2",
     "@shopify/theme-product": "^2.0.5",
     "@shopify/theme-product-form": "^2.0.5",
-    "babel-preset-shopify": "^19.0.0"
+    "babel-preset-shopify": "^19.0.0",
+    "node-sass": "^4.12.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "concurrently \"theme watch --notify=.sync_theme\" \"parcel watch scripts/scripts.js --out-dir assets --out-file scripts.js --no-hmr\" "
+    "watch": "concurrently \"theme watch --notify=.sync_theme\" \"parcel watch scripts/scripts.js --out-dir assets --out-file scripts.js --no-hmr\" \"gulp\" "
   },
   "repository": {
     "type": "git",

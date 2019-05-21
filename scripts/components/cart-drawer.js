@@ -27,7 +27,23 @@ $('.cart-drawer').click(function(e){
     e.preventDefault()
     closeCart()
   } 
-})
+});
+
+$(selectors.cartItemRemove).click((e) => {
+  // e.preventDefault();
+  console.log("clicked")
+  var lineItemNumber = $(e.currentTarget).data('line-number');
+  var quantity = 0;
+  $.ajax({
+    url: "/cart/change.js",
+    type: 'POST',
+    dataType: 'JSON',
+    data: { quantity: quantity, line: lineItemNumber},
+    success: function() {
+      refreshCart()
+    }
+  })
+});
 
 function refreshCartButtons(){
   $(selectors.cartDrawerClose).click((e) => {

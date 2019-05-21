@@ -3,3 +3,4 @@ config.yml
 .vscode/settings.json
 node_modules
 .cache
+dist

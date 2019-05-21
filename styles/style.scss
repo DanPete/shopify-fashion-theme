@@ -1,0 +1,18 @@
+@import './core/_core.scss';
+@import './core/_theme.scss';
+@import './core/testno.scss';
+
+@import "./static/test.css";
+
+.test1 {
+  font-size: 10px;
+  .test2 {
+    font-size: 8px;
+  }
+  .test3 {
+    font-size: 9px;
+  }
+  .test9{
+    font-size: 3px;
+  }
+}
