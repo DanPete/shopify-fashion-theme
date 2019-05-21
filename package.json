@@ -8,7 +8,8 @@
     "@shopify/theme-product": "^2.0.5",
     "@shopify/theme-product-form": "^2.0.5",
     "babel-preset-shopify": "^19.0.0",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.12.0",
+    "tar": "^4.4.8"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
